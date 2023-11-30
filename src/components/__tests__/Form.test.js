@@ -1,3 +1,4 @@
+//npm test -- --coverage --watchAll=false
 import React from "react";
 
 import { fireEvent } from "@testing-library/react";
@@ -31,15 +32,12 @@ describe("Form", () => {
     expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
 
-
   it("validates that the student name is not blank", () => {
-      /* 1. Create the mock onSave function */
     const onSave = jest.fn();
-      /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined */
     const { getByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
-      /* 3. Click the save button */
+
     fireEvent.click(getByText("Save"));
 
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
@@ -47,13 +45,11 @@ describe("Form", () => {
   });
 
   it("can successfully save after trying to submit an empty student name", () => {
-      /* 1. Create the mock onSave function */
     const onSave = jest.fn();
-     /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined */
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form interviewers={interviewers} onSave={onSave} interviewer={1} />
     );
-    /* 3. Click the save button */
+
     fireEvent.click(getByText("Save"));
 
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
