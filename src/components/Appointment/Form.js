@@ -3,17 +3,6 @@ import React, { useState } from "react";
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
-{/* <input
-  className="appointment__create-input text--semi-bold"
-  name="name"
-  type="text"
-  placeholder="Enter Student Name"
-  value={name}
-  onChange={event => {
-    setName(event.target.value);
-  }}
-  data-testid="student-name-input"
-/> */}
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
@@ -57,6 +46,7 @@ export default function Form(props) {
             onChange={event => {
               setName(event.target.value);
             }}
+            data-testid="student-name-input"
           />
         </form>
         
